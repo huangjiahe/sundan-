@@ -6,7 +6,8 @@
 
 ### 通信模型
 
-![image-20240217174431733](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20240217174431733.png)
+![image](https://github.com/huangjiahe/sundanwiki/assets/160099777/04b6d245-8b78-426e-a76a-683232ab74fd)
+
 
 ### Nacos Config 的推送模型
 
