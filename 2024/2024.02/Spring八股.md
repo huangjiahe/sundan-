@@ -34,6 +34,172 @@ public class MessageService {
 }
 ```
 
+# Spring和SpringBoot的优点
+
+## Spring的优点
+
+### IOC控制反转
+
+它管理对象的创建，配置和生命周期。实现了对象之间的松耦合。
+
+### DI依赖注入
+
+对象间的依赖关系由容器来管理。
+
+### AOP面向切面编程
+
+在不修改源码的情况下对现有代码进行增强。
+
+### 事务管理
+
+通过简单的配置或者注解，可以实现事务的管理。
+
+### 集成性
+
+与其他框架的集成支持。
+
+## SpringBoot的优点
+
+### 自动配置:
+
+Spring Boot 的自动配置特性可以根据类路径中的依赖自动配置应用程序所需的 Bean。例如,当类路径中存在 `spring-webmvc` 依赖时,Spring Boot 会自动配置 `DispatcherServlet`、`ViewResolver` 等 Bean,无需手动配置。
+
+```java
+@SpringBootApplication
+public class MyApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(MyApplication.class, args);
+    }
+}
+```
+
+在上面的代码中,`@SpringBootApplication` 注解结合了 `@Configuration`、`@EnableAutoConfiguration` 和 `@ComponentScan` 注解,启用了 Spring Boot 的自动配置功能。
+
+### 起步依赖:
+
+Spring Boot 提供了一组起步依赖,将相关的依赖打包在一起,简化了依赖管理。例如,要开发一个 Web 应用程序,只需要引入 `spring-boot-starter-web` 起步依赖即可。
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+```
+
+引入 `spring-boot-starter-web` 起步依赖后,Spring Boot 会自动配置 Web 应用程序所需的常见组件,如 Tomcat、Spring MVC 等。
+
+### 内嵌容器:
+
+Spring Boot 内置了 Tomcat、Jetty 等 Web 容器,可以直接打包成可执行的 JAR 文件,无需单独安装和配置外部容器。
+
+```java
+@SpringBootApplication
+public class MyApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(MyApplication.class, args);
+    }
+}
+```
+
+在上面的代码中,通过运行 `main` 方法,Spring Boot 会启动内嵌的 Web 容器,无需额外的配置。
+
+### 生产就绪特性:
+
+Spring Boot 提供了多种生产就绪特性,如健康检查、指标监控等。例如,Spring Boot Actuator 提供了一组 REST 端点,用于监控和管理应用程序。
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+```
+
+引入 `spring-boot-starter-actuator` 起步依赖后,Spring Boot 会自动配置 Actuator 的端点,如 `/health`、`/metrics` 等,可以用于检查应用程序的健康状况和监控指标。
+
+### 约定优于配置:
+
+Spring Boot 遵循"约定优于配置"的原则,提供了合理的默认配置和约定。例如,Spring Boot 约定将静态资源放在 `src/main/resources/static` 目录下,无需额外配置。
+
+```
+src/main/resources/
+  |- static/
+      |- css/
+      |- js/
+      |- images/
+```
+
+按照 Spring Boot 的约定组织静态资源目录结构,Spring Boot 会自动将其映射到 Web 应用程序的根路径下。
+
+以上是一些使用源码举例说明 Spring Boot 优点的示例。Spring Boot 的自动配置、起步依赖、内嵌容器、生产就绪特性和约定优于配置等特性,大大简化了应用程序的开发、配置和部署过程,提高了开发效率和生产力。
+
+# Spring用到了哪些设计模式
+
+## 简单工厂
+
+BeanFactory，getBean方法传入bean的名称来获取Bean对象。
+
+```java
+@Override
+public Object getBean(String name) throws BeansException {
+    assertBeanFactoryActive();
+    return getBeanFactory().getBean(name);
+}
+```
+
+## 工厂方法
+
+FactoryBean。Spring在使用getBean()时，就会自动调用该bean的getObject()方法。
+
+## 单例模式
+
+一个类仅有一个实例。
+
+## 观察者模式
+
+监听器的实现。
+
+## 模板模式
+
+jdbcTemplate
+
+## 代理模式
+
+Aop动态代理。
+
+# AOP的实现方式
+
+## 静态代理
+
+在编译器织入Java字节码。AspectJ。代理类需要与目标对象实现一样的接口。
+
+## 动态代理
+
+在运行时创建，AOP不会去修改字节码，而是在内存临时生成一个代理对象，在运行期间对业务方法进行增强，不会生成新类。
+
+### JDK动态代理
+
+如果目标类实现了接口，JDK动态代理目标类。使用反射技术实现。
+
+### CGLIB
+
+如果目标类没有实现接口，cglib动态创建目标类的子类对象，在子类对象中增强目标类。需要引入asm.jar。
+
+# Spring通知的类型
+
+## Before
+
+## After
+
+## After-returing
+
+## After-throwing
+
+## Around
+
+
+
+
+
 # Spring和SpringBoot的启动过程
 
 ## Spring
