@@ -365,7 +365,7 @@ public class MessageService {
 }
 ```
 
-# Bean的生命周期
+# Bean的生命周期//TODO
 
 Bean 的生命周期是指 Bean 从创建到销毁的整个过程。在 Spring 容器中,Bean 的生命周期由容器管理,通过配置文件或注解来定义 Bean 的创建、初始化、使用和销毁的过程。
 
